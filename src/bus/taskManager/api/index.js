@@ -7,7 +7,7 @@ export const api = {
     },
 
     toggleComplete: async (id) => {
-      await fetch(`http://localhost:5000/tasks/toggle-completed/${id}`);
+      await fetch(`http://localhost:5000/tasks/toggle-complete/${id}`);
     },
 
     remove: async (id) => {
