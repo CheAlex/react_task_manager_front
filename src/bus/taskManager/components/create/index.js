@@ -16,15 +16,18 @@ export const Create = ({ createTask }) => {
     setIsCompleted(isChecked);
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
     event.stopPropagation();
 
     if (isDataValid()) {
-      createTask({
+      await createTask({
         title,
         isCompleted
       });
+
+      setTitle('');
+      setIsCompleted(false);
     }
   };
 

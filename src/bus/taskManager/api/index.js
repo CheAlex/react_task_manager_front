@@ -20,8 +20,8 @@ export const api = {
       // await response.json();
     },
 
-    create: async (task) => {
-      await fetch(
+    create: (task) => {
+      return fetch(
         `http://localhost:5000/tasks`,
         {
           method: "POST",
