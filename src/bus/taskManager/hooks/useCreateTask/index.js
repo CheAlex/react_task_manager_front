@@ -1,6 +1,3 @@
-// Core
-import { useEffect, useState } from "react";
-
 // API
 import { api } from "../../api";
 

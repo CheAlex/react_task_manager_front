@@ -2,18 +2,16 @@ export const api = {
   tasks: {
     getAll: async () => {
       const response = await fetch("http://localhost:5000/tasks");
-      const tasks = await response.json();
 
-      return tasks;
+      return await response.json();
     },
 
     toggleComplete: async (id) => {
-      const response = await fetch(`http://localhost:5000/tasks/toggle-completed/${id}`);
-      // await response.json();
+      await fetch(`http://localhost:5000/tasks/toggle-completed/${id}`);
     },
 
     remove: async (id) => {
-      const response = await fetch(
+      await fetch(
         `http://localhost:5000/tasks/${id}`,
         {
           method: "DELETE",
@@ -23,7 +21,7 @@ export const api = {
     },
 
     create: async (task) => {
-      const response = await fetch(
+      await fetch(
         `http://localhost:5000/tasks`,
         {
           method: "POST",

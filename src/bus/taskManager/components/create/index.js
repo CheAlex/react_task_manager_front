@@ -20,7 +20,7 @@ export const Create = ({ createTask }) => {
     event.preventDefault();
     event.stopPropagation();
 
-    if (isValid()) {
+    if (isDataValid()) {
       createTask({
         title,
         isCompleted
@@ -28,7 +28,7 @@ export const Create = ({ createTask }) => {
     }
   };
 
-  const isValid = () => {
+  const isDataValid = () => {
     return 0 < title.length;
   };
 

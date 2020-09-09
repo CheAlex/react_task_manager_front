@@ -18,8 +18,6 @@ export const useTaskManager = () => {
   const fetchTasks = async () => {
     const tasks = await api.tasks.getAll();
 
-    console.log(tasks);
-
     setTasks(tasks);
   };
 
