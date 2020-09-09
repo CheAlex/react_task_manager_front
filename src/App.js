@@ -1,9 +1,9 @@
 // Core
-import React from 'react';
-import { Text, initializeIcons } from '@fluentui/react';
+import React from "react";
+import { Text, initializeIcons } from "@fluentui/react";
 
 // Domains
-import { TaskManager } from './bus/taskManager';
+import { TaskManager } from "./bus/taskManager";
 
 initializeIcons();
 

@@ -1,24 +1,30 @@
 // Core
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 // API
-import { api } from '../../api';
-
-// Other
-// import { tasks as mockData } from './tasks.js';
+import { api } from "../../api";
 
 export const useTaskManager = () => {
-    const [ tasks, setTasks] = useState([]);
-    
-    useEffect(() => {
-        (async () => {
-            const tasks = await api.tasks.getAll();
+  const [ tasks, setTasks] = useState([]);
+  
+  useEffect(() => {
+    (async () => {
+      const tasks = await api.tasks.getAll();
 
-            setTasks(tasks);
-        })();
-    }, []);
+      setTasks(tasks);
+    })();
+  }, []);
+  
+  const fetchTasks = async () => {
+    const tasks = await api.tasks.getAll();
 
-    return {
-        tasks,
-    }
-}
+    console.log(tasks);
+
+    setTasks(tasks);
+  };
+
+  return {
+    tasks,
+    fetchTasks
+  }
+};

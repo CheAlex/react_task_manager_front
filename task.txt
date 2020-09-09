@@ -5,3 +5,32 @@
 5) Возможность отмечать задачу, как выполненную\невополненную. Можно по специальной кнопке сохранять
 6) Добавить\удалить задачу (как бонус)
 7) 
+
+CORS настроить
+
+npm i -g @nestjs/cli
+
+
+yarn start
+yarn start:dev
+
+
+// это уже есть в packeges.json
+yarn add typeorm --save
+yarn add reflect-metadata --save
+yarn add @types/node --save-dev
+yarn add pg --save
+
+
+
+yarn add @nestjs/typeorm --save
+
+
+
+yarn install --production=false
+
+
+5432
+
+
+Шварцмиллер
