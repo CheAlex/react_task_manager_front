@@ -34,3 +34,8 @@ yarn install --production=false
 
 
 Шварцмиллер
+
+
+1) Sdelat6 dva deystviya na toggle
+2) Watchers papka
+3) spinner

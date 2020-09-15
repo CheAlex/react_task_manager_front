@@ -1,28 +1,48 @@
 // Core
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-// API
-import { api } from "../../api";
+// Other
+// import { api } from "../../api";
+import { taskManagerActions } from "../../actions";
 
 export const useTaskManager = () => {
-  const [ tasks, setTasks] = useState([]);
+  const dispatch = useDispatch();
+  const { tasks } = useSelector((state) => state.taskManager);
   
   useEffect(() => {
-    (async () => {
-      const tasks = await api.tasks.getAll();
+    dispatch(taskManagerActions.fetchTasksAsync());
+  }, [dispatch]);
 
-      setTasks(tasks);
-    })();
-  }, []);
-  
-  const fetchTasks = async () => {
-    const tasks = await api.tasks.getAll();
+  const createTask = async (task) => {
+    // await api.tasks.create(task);
+    // fetchTasks();
+  }
 
-    setTasks(tasks);
+  const toggleComplete = async (id) => {
+    // await api.tasks.toggleComplete(id);
+    // fetchTasks();
+  }
+
+  const removeTask = async (id) => {
+    // await api.tasks.remove(id);
+    // fetchTasks();
   };
+
+  // const createTask = async (task) => {}
+
+  // const fetchTasks = async () => {
+  //   const tasks = await api.tasks.getAll();
+  //
+  //   setTasks(tasks);
+  // };
 
   return {
     tasks,
-    fetchTasks
+    fetchTasks: () => {},
+
+    createTask: () => {},
+    toggleComplete: () => {},
+    removeTask: () => {},
   }
 };

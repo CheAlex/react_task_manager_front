@@ -1,6 +1,9 @@
 // Core
 import React from "react";
-import { Text, initializeIcons } from "@fluentui/react";
+import { Provider } from 'react-redux';
+import { initializeIcons } from "@fluentui/react";
+
+import { store } from './init/store';
 
 // Domains
 import { TaskManager } from "./bus/taskManager";
@@ -9,9 +12,8 @@ initializeIcons();
 
 export const App = () => (
   <>
-    <Text variant="mega">
-      App
-    </Text>
-    <TaskManager />
+    <Provider store={ store }>
+        <TaskManager />
+    </Provider>
   </>
 );
