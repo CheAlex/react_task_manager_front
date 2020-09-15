@@ -5,14 +5,14 @@ import { createStore, applyMiddleware } from "redux";
 import { rootReducer } from './rootReducer';
 import { rootSaga } from './rootSaga';
 import {
-    middleware,
-    composeEnchancers,
-    sagaMiddleware
+  middleware,
+  composeEnhancers,
+  sagaMiddleware
 } from './middleware';
 
 export const store = createStore(
-    rootReducer,
-    composeEnchancers(applyMiddleware(...middleware))
+  rootReducer,
+  composeEnhancers(applyMiddleware(...middleware))
 );
 
 sagaMiddleware.run(rootSaga);

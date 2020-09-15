@@ -13,7 +13,7 @@ export const logger = createLogger({
 const sagaMiddleware = createSagaMiddleware();
 
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-const composeEnchancers = __DEV__ && devtools ? devtools : compose;
+const composeEnhancers = __DEV__ && devtools ? devtools : compose;
 
 const middleware = [ sagaMiddleware ];
 
@@ -21,4 +21,4 @@ if (__DEV__) {
     middleware.push(logger);
 }
 
-export { middleware, composeEnchancers, sagaMiddleware };
+export { middleware, composeEnhancers, sagaMiddleware };

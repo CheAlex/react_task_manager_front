@@ -22,20 +22,37 @@ yarn add @types/node --save-dev
 yarn add pg --save
 
 
-
 yarn add @nestjs/typeorm --save
-
-
 
 yarn install --production=false
 
 
-5432
-
-
 Шварцмиллер
 
+yarn add redux react-redux redux-saga
+yarn add -D react-logger
+yarn add -D redux-logger
 
-1) Sdelat6 dva deystviya na toggle
-2) Watchers papka
-3) spinner
+
+
+0) Сделать два действия на toggle
+1) Watchers papka
+2) spinner
+
+
+import dotProp from "dot-prop-immutable"; ???
+
+mark-comlete
+unmark-comlete
+
+
+pre, post имена?
+
+добавить валидацию на беке
+
+изменение статуса через задачи POST(PUT(?)) /tasks/123/tasks
+
+toggle
+
+spinner вешать на любое дейтсвие, чтоб другие не могли выполняться
+

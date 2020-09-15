@@ -8,15 +8,15 @@ import { Create } from "./components/create";
 
 // Hooks
 import { useTaskManager } from "./hooks/useTaskManager";
-import { useToggleComplete } from "./hooks/useToggleComplete";
-import { useRemoveTask } from "./hooks/useRemoveTask";
-import { useCreateTask } from "./hooks/useCreateTask";
 
 export const TaskManager = () => {
-  const { tasks, fetchTasks } = useTaskManager();
-  const toggleComplete = useToggleComplete(fetchTasks);
-  const removeTask = useRemoveTask(fetchTasks);
-  const createTask = useCreateTask(fetchTasks);
+  const {
+    tasks,
+    markComplete,
+    unmarkComplete,
+    removeTask,
+    createTask
+  } = useTaskManager();
 
   return (
     <div>
@@ -26,7 +26,8 @@ export const TaskManager = () => {
       <br />
       <List
         items={tasks}
-        toggleComplete={toggleComplete}
+        markComplete={markComplete}
+        unmarkComplete={unmarkComplete}
         removeTask={removeTask}
       />
       <br />

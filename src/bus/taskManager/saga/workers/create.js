@@ -5,19 +5,21 @@ import { put, call, delay } from 'redux-saga/effects';
 import { taskManagerActions } from "../../actions";
 import { api } from '../../api';
 
-export function* fetchTasks() {
+export function* create(action) {
+  const task = action.payload;
+
   try {
     // Enable Spinner
-    const response = yield call(api.tasks.getAll);
+    const response = yield call(() => { return api.tasks.create(task) });
     console.log(response);
-    const tasks = yield call([response, response.json]);
+    const createdTask = yield call([response, response.json]);
 
-    if (response.status !== 200) {
+    if (response.status !== 201) {
       throw new Error('Some error');
     }
 
     // yield delay(2000);
-    yield put(taskManagerActions.fillTasks(tasks));
+    yield put(taskManagerActions.create(createdTask));
   } catch (error) {
     console.log(error);
     // Write to Redux error

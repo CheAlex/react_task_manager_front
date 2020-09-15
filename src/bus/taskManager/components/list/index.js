@@ -4,7 +4,7 @@ import React from "react";
 // Elements
 import { Task } from "../../../../elements/task";
 
-export const List = ({ items, toggleComplete, removeTask }) => {
+export const List = ({ items, markComplete, unmarkComplete, removeTask }) => {
   const listJSX = items.map((
     {
       id,
@@ -16,9 +16,9 @@ export const List = ({ items, toggleComplete, removeTask }) => {
       key={id}
       label={title}
       isCompleted={isCompleted}
-      id={id}
-      toggleComplete={() => { toggleComplete(id) }}
       removeTask={() => { removeTask(id) }}
+      markComplete={() => { markComplete(id) }}
+      unmarkComplete={() => { unmarkComplete(id) }}
     />
   ));
 

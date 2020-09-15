@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // Other
-// import { api } from "../../api";
 import { taskManagerActions } from "../../actions";
 
 export const useTaskManager = () => {
@@ -14,35 +13,27 @@ export const useTaskManager = () => {
     dispatch(taskManagerActions.fetchTasksAsync());
   }, [dispatch]);
 
-  const createTask = async (task) => {
-    // await api.tasks.create(task);
-    // fetchTasks();
-  }
-
-  const toggleComplete = async (id) => {
-    // await api.tasks.toggleComplete(id);
-    // fetchTasks();
-  }
-
-  const removeTask = async (id) => {
-    // await api.tasks.remove(id);
-    // fetchTasks();
+  const markComplete = (id) => {
+    dispatch(taskManagerActions.markCompleteAsync(id));
   };
 
-  // const createTask = async (task) => {}
+  const unmarkComplete = (id) => {
+    dispatch(taskManagerActions.unmarkCompleteAsync(id));
+  };
 
-  // const fetchTasks = async () => {
-  //   const tasks = await api.tasks.getAll();
-  //
-  //   setTasks(tasks);
-  // };
+  const removeTask = (id) => {
+    dispatch(taskManagerActions.removeAsync(id));
+  };
+
+  const createTask = (task) => {
+    dispatch(taskManagerActions.createAsync(task));
+  };
 
   return {
     tasks,
-    fetchTasks: () => {},
-
-    createTask: () => {},
-    toggleComplete: () => {},
-    removeTask: () => {},
+    markComplete,
+    unmarkComplete,
+    removeTask,
+    createTask,
   }
 };
