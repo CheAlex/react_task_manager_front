@@ -22,20 +22,21 @@ export const Task = ({
   };
 
   return (
-    <div style={{padding: "10px", border: "1px solid #000", margin: "2px"}}>
+    <div style={{padding: "10px", border: "1px solid #000", margin: "2px", overflow: "auto"}}>
       <Checkbox
         label={label}
         checked={isCompleted}
         onChange={onCompletionChanged}
         disabled={isCompletionChangeInProgress}
+        styles={{root: {float: "left"}}}
       />
       {isCompletionChangeInProgress &&
-        <Spinner size={SpinnerSize.small} /*style={{float: "left"}}*/ />
+        <Spinner size={SpinnerSize.small} style={{float: "left"}} />
       }
-      <br/>
-      <DefaultButton onClick={removeTask} text={"Delete"} disabled={isRemovingTaskInProgress} />
+      <br style={{clear: "both"}} />
+      <DefaultButton onClick={removeTask} text={"Delete"} disabled={isRemovingTaskInProgress} style={{float: "left"}} />
       {isRemovingTaskInProgress &&
-        <Spinner size={SpinnerSize.small} /*style={{float: "left"}}*/ />
+        <Spinner size={SpinnerSize.large} style={{float: "left"}} />
       }
     </div>
   )
