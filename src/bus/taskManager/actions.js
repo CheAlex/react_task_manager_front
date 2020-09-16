@@ -7,6 +7,14 @@ export const taskManagerActions = {
     type: types.TASK_MANAGER_FILL_TASKS,
     payload: tasks,
   }),
+  trackAction: ({action, key = null}) => ({
+    type: types.TASK_MANAGER_TRACK_ACTION,
+    payload: {action, key},
+  }),
+  untrackAction: ({action, key = null}) => ({
+    type: types.TASK_MANAGER_UNTRACK_ACTION,
+    payload: {action, key},
+  }),
   markComplete: (id) => ({
     type: types.TASK_MANAGER_MARK_COMPLETE,
     payload: id,
@@ -22,6 +30,14 @@ export const taskManagerActions = {
   create: (task) => ({
     type: types.TASK_MANAGER_CREATE,
     payload: task,
+  }),
+  showClientError: () => ({
+    type: types.TASK_MANAGER_SHOW_CLIENT_ERROR,
+    // payload: null,
+  }),
+  showServerError: () => ({
+    type: types.TASK_MANAGER_SHOW_SERVER_ERROR,
+    // payload: null,
   }),
 
   // Async

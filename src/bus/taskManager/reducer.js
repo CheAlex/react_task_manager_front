@@ -4,7 +4,8 @@ import dotProp from "dot-prop-immutable";
 import { types } from './types';
 
 const initialState = {
-  tasks: []
+  tasks: [],
+  currentActions: {}
 };
 
 export const taskManagerReducer = (
@@ -25,6 +26,14 @@ export const taskManagerReducer = (
       return remove(state, action);
     case types.TASK_MANAGER_CREATE:
       return create(state, action);
+    case types.TASK_MANAGER_TRACK_ACTION:
+      return trackAction(state, action);
+    case types.TASK_MANAGER_UNTRACK_ACTION:
+      return untrackAction(state, action);
+    case types.TASK_MANAGER_SHOW_CLIENT_ERROR:
+      return showClientError(state, action);
+    case types.TASK_MANAGER_SHOW_SERVER_ERROR:
+      return showServerError(state, action);
     default:
       return state;
   }
@@ -82,4 +91,36 @@ const create = (state, action) => {
     ...state,
     tasks: [...state.tasks, task]
   };
+};
+
+const trackAction = (state, action) => {
+  const {action: actionName, key} = action.payload;
+
+  if (null === key) {
+    return dotProp.set(state, `currentActions.${actionName}`, true)
+  } else {
+    return dotProp.set(state, `currentActions.${actionName}.${key}`, true)
+  }
+};
+
+const untrackAction = (state, action) => {
+  const {action: actionName, key} = action.payload;
+
+  if (null === key) {
+    return dotProp.delete(state, `currentActions.${actionName}`)
+  } else {
+    return dotProp.delete(state, `currentActions.${actionName}.${key}`)
+  }
+};
+
+const showClientError = (state, action) => {
+  alert('Произошла клиентская ошибка');
+
+  return state;
+};
+
+const showServerError = (state, action) => {
+  alert('Произошла серверная ошибка');
+
+  return state;
 };

@@ -7,8 +7,8 @@ import { taskManagerActions } from "../../actions";
 
 export const useTaskManager = () => {
   const dispatch = useDispatch();
-  const { tasks } = useSelector((state) => state.taskManager);
-  
+  const { tasks, currentActions } = useSelector((state) => state.taskManager);
+
   useEffect(() => {
     dispatch(taskManagerActions.fetchTasksAsync());
   }, [dispatch]);
@@ -25,12 +25,13 @@ export const useTaskManager = () => {
     dispatch(taskManagerActions.removeAsync(id));
   };
 
-  const createTask = (task) => {
-    dispatch(taskManagerActions.createAsync(task));
+  const createTask = async (task) => {
+    return dispatch(taskManagerActions.createAsync(task));
   };
 
   return {
     tasks,
+    currentActions,
     markComplete,
     unmarkComplete,
     removeTask,

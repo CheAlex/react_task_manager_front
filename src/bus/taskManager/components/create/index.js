@@ -2,9 +2,9 @@
 import React, {useState} from "react";
 
 // Elements
-import { Text, TextField, Checkbox, DefaultButton } from "@fluentui/react";
+import { Text, TextField, Checkbox, DefaultButton, Spinner, SpinnerSize } from "@fluentui/react";
 
-export const Create = ({ createTask }) => {
+export const Create = ({ createTask, isCreatingTaskInProgress }) => {
   const [title, setTitle] = useState("");
   const [isCompleted, setIsCompleted] = useState(false);
 
@@ -36,21 +36,26 @@ export const Create = ({ createTask }) => {
   };
 
   return (
-    <>
+    <div style={{padding: "10px", border: "1px solid #000", margin: "2px"}}>
       <Text>Create task</Text>
       <form onSubmit={onSubmit}>
         <TextField
           label="Title"
           onChange={onChangeTitle}
           value={title}
+          disabled={isCreatingTaskInProgress}
         />
         <Checkbox
           label="Is completed"
           checked={isCompleted}
           onChange={onChangeIsCompleted}
+          disabled={isCreatingTaskInProgress}
         />
-        <DefaultButton type="submit" text="Create" />
+        <DefaultButton type="submit" text="Create" disabled={isCreatingTaskInProgress} />
+        {isCreatingTaskInProgress &&
+          <Spinner size={SpinnerSize.large} /*style={{float: "left"}}*/ />
+        }
       </form>
-    </>
+    </div>
   );
 };

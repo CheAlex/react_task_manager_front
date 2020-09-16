@@ -4,7 +4,10 @@ import React from "react";
 // Elements
 import { Task } from "../../../../elements/task";
 
-export const List = ({ items, markComplete, unmarkComplete, removeTask }) => {
+// Other
+import dotProp from "dot-prop-immutable";
+
+export const List = ({ items, currentActions, markComplete, unmarkComplete, removeTask }) => {
   const listJSX = items.map((
     {
       id,
@@ -19,6 +22,8 @@ export const List = ({ items, markComplete, unmarkComplete, removeTask }) => {
       removeTask={() => { removeTask(id) }}
       markComplete={() => { markComplete(id) }}
       unmarkComplete={() => { unmarkComplete(id) }}
+      isCompletionChangeInProgress={!!dotProp.get(currentActions, `completionChange.${id}`)}
+      isRemovingTaskInProgress={!!dotProp.get(currentActions, `remove.${id}`)}
     />
   ));
 
