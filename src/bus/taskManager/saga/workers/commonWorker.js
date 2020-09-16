@@ -14,7 +14,6 @@ export function createWorker(
   return function* (action) {
     try {
       yield put(taskManagerActions.trackAction(trackActionFactory(action)));
-
       yield delay(500);
 
       const response = yield call(() => { return apiMethod(action) });
