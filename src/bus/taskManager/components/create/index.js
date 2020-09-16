@@ -5,6 +5,8 @@ import React, {useState} from "react";
 import { Text, TextField, Checkbox, DefaultButton, Spinner, SpinnerSize } from "@fluentui/react";
 
 export const Create = ({ createTask, isCreatingTaskInProgress }) => {
+  // @todo: можно вынести state отсюда в redux, но не сейчас :)
+
   const [title, setTitle] = useState("");
   const [isCompleted, setIsCompleted] = useState(false);
 
