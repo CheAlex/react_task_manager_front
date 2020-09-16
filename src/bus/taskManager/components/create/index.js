@@ -36,7 +36,7 @@ export const Create = ({ createTask, isCreatingTaskInProgress }) => {
   };
 
   return (
-    <div style={{padding: "10px", border: "1px solid #000", margin: "2px"}}>
+    <div style={{padding: "10px", border: "1px solid #000", margin: "2px", overflow: "auto"}}>
       <Text>Create task</Text>
       <form onSubmit={onSubmit}>
         <TextField
@@ -51,9 +51,9 @@ export const Create = ({ createTask, isCreatingTaskInProgress }) => {
           onChange={onChangeIsCompleted}
           disabled={isCreatingTaskInProgress}
         />
-        <DefaultButton type="submit" text="Create" disabled={isCreatingTaskInProgress} />
+        <DefaultButton type="submit" text="Create" disabled={isCreatingTaskInProgress} style={{float: "left"}} />
         {isCreatingTaskInProgress &&
-          <Spinner size={SpinnerSize.large} /*style={{float: "left"}}*/ />
+          <Spinner size={SpinnerSize.large} style={{float: "left"}} />
         }
       </form>
     </div>
